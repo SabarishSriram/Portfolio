@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
@@ -11,6 +12,19 @@ import { Docker } from "@/components/ui/svgs/docker";
 import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
+
+type Hackathon = {
+  title: string;
+  dates?: string;
+  location?: string;
+  description?: string;
+  image?: string;
+  links?: {
+    href: string;
+    title: string;
+    icon: ReactNode;
+  }[];
+};
 
 export const DATA = {
   name: "Sabarish Sriram",
@@ -116,6 +130,7 @@ export const DATA = {
         },
       ],
       image: "",
+      video: "",
     },
     {
       title: "TierLister",
@@ -139,6 +154,7 @@ export const DATA = {
         },
       ],
       image: "",
+      video: "",
     },
     {
       title: "SlideScribe",
@@ -163,10 +179,11 @@ export const DATA = {
         },
       ],
       image: "",
+      video: "",
     },
   ],
 
-  hackathons: [],
+  hackathons: [] as Hackathon[],
 
   leadership: [
     {
