@@ -226,4 +226,121 @@ export const Icons = {
       />
     </svg>
   ),
+  leetcode: (props: IconProps) => (
+    <i className="devicon-leetcode-plain" {...(props as any)} />
+  ),
+  vue: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Vue.js</title>
+      <path
+        d="M1.5 3.5h5.1L12 13.3 17.4 3.5h5.1L12 20.5 1.5 3.5z"
+        fill="#41B883"
+      />
+      <path
+        d="M6.6 3.5 12 13.3 17.4 3.5h-3.3L12 7.9 9.3 3.5H6.6z"
+        fill="#35495E"
+      />
+    </svg>
+  ),
+  prisma: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Prisma</title>
+      <path
+        d="M4.2 18.8 11 2.5a1 1 0 0 1 1.8-.1l7 14.2a1 1 0 0 1-.7 1.4l-8.3 1.7a1 1 0 0 1-1-.4l-5.4-5.9a1 1 0 0 1-.2-1.1z"
+        fill="#0C344B"
+      />
+    </svg>
+  ),
+  mongodb: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>MongoDB</title>
+      <path
+        d="M12 2s3.6 3.4 3.6 8c0 3.8-2.1 7-3.2 8.7a.5.5 0 0 1-.8 0C10.5 17 8.4 13.8 8.4 10 8.4 5.4 12 2 12 2z"
+        fill="#47A248"
+      />
+    </svg>
+  ),
+  redis: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Redis</title>
+      <path d="M3 8.5 12 5l9 3.5-9 3.5z" fill="#D82C20" />
+      <path d="M3 12.5 12 9l9 3.5-9 3.5z" fill="#A61F1A" />
+      <path d="M3 16.5 12 13l9 3.5-9 3.5z" fill="#7A1A18" />
+    </svg>
+  ),
+  firebase: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Firebase</title>
+      <path d="M5 19 7.5 4.5 11 10z" fill="#FFA000" />
+      <path d="M11 10 14 3l2.5 8.5z" fill="#F57C00" />
+      <path d="M5 19 11 10l5.5 7.5L11 21z" fill="#FFCA28" />
+    </svg>
+  ),
+  supabase: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Supabase</title>
+      <path d="M6 3h6l-3 7h7l-9 11V11H3z" fill="#3ECF8E" />
+    </svg>
+  ),
+  aws: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>AWS</title>
+      <path
+        d="M3 17c3 2 6.5 3 9 3s6-.8 9-3v1c-3 2.2-6.5 3.2-9 3.2S6 20.2 3 18z"
+        fill="#FF9900"
+      />
+    </svg>
+  ),
+  git: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Git</title>
+      <path
+        d="M3.5 10.6 10.6 3.5a1.5 1.5 0 0 1 2.1 0l7.8 7.8a1.5 1.5 0 0 1 0 2.1l-7.1 7.1a1.5 1.5 0 0 1-2.1 0L3.5 12.7a1.5 1.5 0 0 1 0-2.1z"
+        fill="#F05133"
+      />
+    </svg>
+  ),
+  figma: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>Figma</title>
+      <path d="M9 3h3a3 3 0 1 1 0 6H9z" fill="#F24E1E" />
+      <path d="M6 6a3 3 0 0 1 3-3v6a3 3 0 0 1-3-3z" fill="#FF7262" />
+      <path d="M6 12a3 3 0 0 1 3-3v6a3 3 0 0 1-3-3z" fill="#A259FF" />
+      <path d="M9 15a3 3 0 1 1 3 3 3 3 0 0 1-3-3z" fill="#0ACF83" />
+      <path d="M12 6h3a3 3 0 1 1 0 6h-3z" fill="#1ABCFE" />
+    </svg>
+  ),
+  javascript: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>JavaScript</title>
+      <path d="M4 3h16v18L12 21l-8 0z" fill="#F7DF1E" />
+      <path
+        d="M11 17v-5H9v6.5a2.5 2.5 0 0 0 2.6 2.5H12z"
+        fill="#000000"
+        opacity="0.8"
+      />
+    </svg>
+  ),
+  html5: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>HTML</title>
+      <path d="M4 3h16l-1.5 16.5L12 21l-6.5-1.5z" fill="#E34F26" />
+      <path
+        d="M7 7h10l-.3 2H9.2l.2 2h7.4l-.4 4.2L12 16.8l-4-1V13h2.1l.1 1 1.8.5 1.9-.5.2-2.5H7.1z"
+        fill="#FFFFFF"
+        opacity="0.9"
+      />
+    </svg>
+  ),
+  css3: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <title>CSS</title>
+      <path d="M4 3h16l-1.5 16.5L12 21l-6.5-1.5z" fill="#1572B6" />
+      <path
+        d="M7.2 7h9.6l-.3 2H9.3l-.1 1.9h7.1l-.4 4.1L12 16.8l-4-1-.1-2h2l.1.7L12 15l2.1-.6.2-1.7H7.1z"
+        fill="#FFFFFF"
+        opacity="0.9"
+      />
+    </svg>
+  ),
 };
