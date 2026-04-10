@@ -16,7 +16,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 
   if (!src || imageError) {
     return (
-      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+      <div className="size-10 md:size-12 rounded-full bg-white/95 shadow-sm flex-none" />
     );
   }
 
@@ -24,7 +24,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+      className="size-10 md:size-12 rounded-full bg-white overflow-hidden object-contain shadow-sm flex-none"
       onError={() => setImageError(true)}
     />
   );
@@ -52,14 +52,14 @@ export default function WorkSection() {
                           "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-300 ease-out",
                           "translate-x-0 opacity-0",
                           "group-hover:translate-x-1 group-hover:opacity-100",
-                          "group-data-[state=open]:opacity-0 group-data-[state=open]:translate-x-0"
+                          "group-data-[state=open]:opacity-0 group-data-[state=open]:translate-x-0",
                         )}
                       />
                       <ChevronDown
                         className={cn(
                           "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-200",
                           "opacity-0 rotate-0",
-                          "group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
+                          "group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180",
                         )}
                       />
                     </span>
@@ -84,4 +84,3 @@ export default function WorkSection() {
     </Accordion>
   );
 }
-
