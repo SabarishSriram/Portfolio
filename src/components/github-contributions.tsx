@@ -1,8 +1,8 @@
 "use client";
 
-import { GitHubCalendar, } from "react-github-calendar";
+import { GitHubCalendar } from "react-github-calendar";
 
-const githubDarkTheme: GitHubCalendar["theme"] = {
+const githubDarkTheme = {
   // GitHub-style 5-level palettes (background + 4 intensity levels)
   dark: ["#0d1117", "#0e4429", "#006d32", "#26a641", "#39d353"],
   light: ["#ffffff", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
@@ -17,8 +17,7 @@ export function GitHubContributionsCard({
 }: GitHubContributionsCardProps) {
   const halfYearAgo = new Date();
   halfYearAgo.setMonth(halfYearAgo.getMonth() - 6);
-
-  const transformData: GithubCalendarProps["transformData"] = (data) =>
+  const transformData = (data: any[]) =>
     data.filter((day) => new Date(day.date) >= halfYearAgo);
 
   return (
@@ -35,9 +34,6 @@ export function GitHubContributionsCard({
               fontSize={12}
               transformData={transformData}
               showWeekdayLabels={false}
-              tooltipText={(value) =>
-                `${value.count} contributions on ${value.date}`
-              }
             />
           </div>
         </div>
