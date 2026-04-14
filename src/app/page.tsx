@@ -12,9 +12,10 @@ import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { fetchActivityStats } from "@/lib/stats";
 import { GitHubContributionsCard } from "@/components/github-contributions";
-import { LeetCodeStatsCard } from "@/components/leetcode-stats-card";
+import { LeetCodeActivityCard } from "@/components/leetcode-activity-card";
 
 const BLUR_FADE_DELAY = 0.04;
+const ACTIVITY_MONTHS = DATA.activityMonths;
 
 export default async function Page() {
   const stats = await fetchActivityStats();
@@ -129,16 +130,14 @@ export default async function Page() {
                 key={skill.name}
                 delay={BLUR_FADE_DELAY * 10 + id * 0.05}
               >
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2 text-foreground">
+                <div className="bg-muted/40 rounded-xl h-8 w-fit px-4 flex items-center gap-2 text-foreground cursor-pointer transition-transform transition-colors duration-200 hover:-translate-y-0.5 hover:shadow-sm hover:bg-zinc-900 hover:text-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-900">
                   {skill.icon && (
                     <i
                       className={`${skill.icon} text-base leading-none`}
                       aria-hidden="true"
                     />
                   )}
-                  <span className="text-foreground text-sm font-medium">
-                    {skill.name}
-                  </span>
+                  <span className="text-sm font-medium">{skill.name}</span>
                 </div>
               </BlurFade>
             ))}
@@ -152,19 +151,15 @@ export default async function Page() {
           </BlurFade>
           <div className="flex flex-col gap-4">
             <BlurFade delay={BLUR_FADE_DELAY * 11}>
-              <GitHubContributionsCard username="sabarishsriram" />
+              <GitHubContributionsCard
+                username="sabarishsriram"
+                months={ACTIVITY_MONTHS}
+              />
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 11.5}>
-              <LeetCodeStatsCard
-                easySolved={stats.leetcodeEasySolved ?? 0}
-                easyTotal={stats.leetcodeTotalQuestions ?? 0}
-                mediumSolved={stats.leetcodeMediumSolved ?? 0}
-                mediumTotal={stats.leetcodeTotalQuestions ?? 0}
-                hardSolved={stats.leetcodeHardSolved ?? 0}
-                hardTotal={stats.leetcodeTotalQuestions ?? 0}
-                totalSolved={stats.leetcodeSolved ?? 0}
-                totalQuestions={stats.leetcodeTotalQuestions ?? 0}
-                attempting={1}
+              <LeetCodeActivityCard
+                username="sabarishsriram"
+                months={ACTIVITY_MONTHS}
               />
             </BlurFade>
           </div>
