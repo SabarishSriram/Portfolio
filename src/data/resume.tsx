@@ -14,7 +14,8 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import { ResumeIcon } from "@radix-ui/react-icons";
 
-const RESUME_URL = "https://drive.google.com/file/d/1rBwISzB7_V7Df33feiYb1nIWu6a-SBRu/view?usp=sharing";
+const RESUME_URL =
+  "https://drive.google.com/file/d/1rBwISzB7_V7Df33feiYb1nIWu6a-SBRu/view?usp=sharing";
 
 type Hackathon = {
   title: string;
@@ -38,6 +39,9 @@ export const DATA = {
   description: "Full-Stack Developer. Student. Building scalable web apps.",
   summary:
     "I am a Computer Science student at SRM University with hands-on experience in building AI-driven platforms, scalable web applications, and developer tools. I have worked on real-world projects involving computer vision, large-scale email processing, and AI-based document transformation systems.",
+
+  // Number of months of activity to show in GitHub/LeetCode cards (1-12)
+  activityMonths: 7,
 
   avatarUrl: "/me.jpeg",
 
@@ -181,7 +185,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "https://private-user-images.githubusercontent.com/143879390/569904215-4535c6d4-a22c-4657-8c06-64902be1466f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzU4MjY0NTksIm5iZiI6MTc3NTgyNjE1OSwicGF0aCI6Ii8xNDM4NzkzOTAvNTY5OTA0MjE1LTQ1MzVjNmQ0LWEyMmMtNDY1Ny04YzA2LTY0OTAyYmUxNDY2Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQxMFQxMzAyMzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01ZmE2Zjg3NWM2NDhjZmRlODJmYmYzZDU1OTJmMzE0NDkzYTA0YTJmOWJkNTM3NDFlOThmYTRlY2Y1MzJjYTA5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.SBHGAMFAW2ESCkd-f5oTJn1hqRpcOkm5xhjCA7tdFkE",
+      image:
+        "https://private-user-images.githubusercontent.com/143879390/569904215-4535c6d4-a22c-4657-8c06-64902be1466f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYxNzgxNzQsIm5iZiI6MTc3NjE3Nzg3NCwicGF0aCI6Ii8xNDM4NzkzOTAvNTY5OTA0MjE1LTQ1MzVjNmQ0LWEyMmMtNDY1Ny04YzA2LTY0OTAyYmUxNDY2Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQxNFQxNDQ0MzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yNDYyZGRlMzdkZDUwMTg3NjIwMjA3NjdjNDA3MGNkNjM2ZDY4MzI3MDcwZTMyZDE0M2Y5MmVhMGE5MmI0Y2Y1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.rVMvv3fu2XAUNeEXVr1BoPkkpmOHmo0GeBIa9RHp378",
       video: "",
     },
     {
@@ -204,7 +209,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "https://camo.githubusercontent.com/77e4ed4ad773c9306918c31bf52c00f173dc964a8e20d54afb64e24e99521b5e/68747470733a2f2f692e726564642e69742f7175713269346a6f38646367312e706e67",
+      image:
+        "https://camo.githubusercontent.com/77e4ed4ad773c9306918c31bf52c00f173dc964a8e20d54afb64e24e99521b5e/68747470733a2f2f692e726564642e69742f7175713269346a6f38646367312e706e67",
       video: "",
     },
     {

@@ -48,6 +48,11 @@ export default function Navbar() {
           .map(([name, social], index) => {
             const isExternal = social.url.startsWith("http");
             const IconComponent = social.icon;
+            const socialColorClasses: Record<string, string> = {
+              GitHub: "text-[#ffffff]",
+              LinkedIn: "text-[#0A66C2]",
+            };
+            const iconColorClass = socialColorClasses[name] ?? "";
             return (
               <Tooltip key={`social-${name}-${index}`}>
                 <TooltipTrigger asChild>
@@ -57,7 +62,9 @@ export default function Navbar() {
                     rel={isExternal ? "noopener noreferrer" : undefined}
                   >
                     <DockIcon className="rounded-2xl cursor-pointer size-full p-0 text-zinc-300 hover:text-zinc-50 transition-transform duration-150 ease-out">
-                      <IconComponent className="size-5 sm:size-6" />
+                      <IconComponent
+                        className={`size-5 sm:size-6 ${iconColorClass}`}
+                      />
                     </DockIcon>
                   </a>
                 </TooltipTrigger>
