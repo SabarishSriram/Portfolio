@@ -227,7 +227,11 @@ export const Icons = {
     </svg>
   ),
   leetcode: (props: IconProps) => (
-    <i className="devicon-leetcode-plain" {...(props as any)} />
+    <img
+      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/leetcode/leetcode-plain.svg"
+      alt="LeetCode"
+      {...(props as any)}
+    />
   ),
   vue: (props: IconProps) => (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
