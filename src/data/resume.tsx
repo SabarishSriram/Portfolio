@@ -34,48 +34,77 @@ export const DATA = {
   name: "Sabarish Sriram",
   initials: "SS",
   url: "https://yourdomain.com",
-  location: "Chennai, India",
-  locationLink: "https://www.google.com/maps/place/chennai",
+  location: "Pune, India",
+  locationLink: "https://www.google.com/maps/place/Pune,+Maharashtra",
+  // Pin for the dot-matrix map tile in the hero
+  geo: { lat: 18.5204, lng: 73.8567, countries: ["IND"] },
   description: "Full-Stack Developer. Student. Building scalable web apps.",
   summary:
     "I am a Computer Science student at SRM University with hands-on experience in building AI-driven platforms, scalable web applications, and developer tools. I have worked on real-world projects involving computer vision, large-scale email processing, and AI-based document transformation systems.",
 
   // Number of months of activity to show in GitHub/LeetCode cards (1-12)
-  activityMonths: 7,
+  activityMonths: 3,
 
   avatarUrl: "/me.jpeg",
+  resumeUrl: RESUME_URL,
+
+  role: "Full-stack developer",
+  // Hero copy: `headline`, then "I build" typed out with each tagline in turn
+  headline: "Computer science student at SRM, shipping full-stack products.",
+  taglines: [
+    "scalable web apps.",
+    "AI-powered products.",
+    "tools developers love.",
+  ],
+
+  timezone: "Asia/Kolkata",
+  timezoneLabel: "IST",
+  coordinates: "18.5204° N, 73.8567° E",
 
   skills: [
-    // Frontend
-    { name: "React", icon: "devicon-react-original colored" },
-    { name: "Next.js", icon: "devicon-nextjs-plain" },
-    { name: "Vue.js", icon: "devicon-vuejs-plain colored" },
-    { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
-
-    // Backend
-    { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-    { name: "Express.js", icon: "devicon-express-original" },
-    { name: "Prisma", icon: "devicon-prisma-original colored" },
-    { name: "Redis", icon: "devicon-redis-plain colored" },
-    { name: "Firebase", icon: "devicon-firebase-plain colored" },
-    { name: "Supabase", icon: "devicon-supabase-plain colored" },
-    { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
-    { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-    { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-
-    // DevOps / Tools
-    { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark" },
-    { name: "Docker", icon: "devicon-docker-plain colored" },
-    { name: "Git", icon: "devicon-git-plain colored" },
-    { name: "GitHub", icon: "devicon-github-original" },
-    { name: "Figma", icon: "devicon-figma-plain colored" },
-
-    // Languages
-    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-    { name: "C++", icon: "devicon-cplusplus-plain colored" },
-    { name: "HTML", icon: "devicon-html5-plain colored" },
-    { name: "CSS", icon: "devicon-css3-plain colored" },
+    {
+      category: "Frontend",
+      items: [
+        { name: "React", icon: "devicon-react-original colored" },
+        { name: "Next.js", icon: "devicon-nextjs-plain" },
+        { name: "Vue.js", icon: "devicon-vuejs-plain colored" },
+        { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
+      ],
+    },
+    {
+      category: "Backend",
+      items: [
+        { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+        { name: "Express.js", icon: "devicon-express-original" },
+        { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
+        { name: "Prisma", icon: "devicon-prisma-original colored" },
+        { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+        { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+        { name: "Redis", icon: "devicon-redis-plain colored" },
+        { name: "Supabase", icon: "devicon-supabase-plain colored" },
+        { name: "Firebase", icon: "devicon-firebase-plain colored" },
+      ],
+    },
+    {
+      category: "Infra & Tools",
+      items: [
+        { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark" },
+        { name: "Docker", icon: "devicon-docker-plain colored" },
+        { name: "Git", icon: "devicon-git-plain colored" },
+        { name: "GitHub", icon: "devicon-github-original" },
+        { name: "Figma", icon: "devicon-figma-plain colored" },
+      ],
+    },
+    {
+      category: "Languages",
+      items: [
+        { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+        { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+        { name: "C++", icon: "devicon-cplusplus-plain colored" },
+        { name: "HTML", icon: "devicon-html5-plain colored" },
+        { name: "CSS", icon: "devicon-css3-plain colored" },
+      ],
+    },
   ],
 
   navbar: [
@@ -116,6 +145,17 @@ export const DATA = {
 
   work: [
     {
+      company: "Bajaj Finserv Health",
+      href: "#",
+      badges: [],
+      location: "On-site",
+      title: "Full Stack Developer Intern",
+      logoUrl: "/bajaj-finserv-health.jpeg",
+      start: "July 2026",
+      end: "Present",
+      description: "Engineered a document forgery detection pipeline with 5 forensic modules to detect tampering and potential AI-generated content in PDFs and images using metadata and pixel-level analysis. Optimized document digitization and translation pipelines by migrating to Azure AI Vision OCR and refining translation workflows, reducing average end-to-end processing time from 9s to 1.5s per document (83% reduction). Integrated RabbitMQ for asynchronous document processing, enabling queue-based task execution across digitization and forensic services.",
+    },
+    {
       company: "Lean Impeccable Tech",
       href: "#",
       badges: [],
@@ -137,7 +177,7 @@ export const DATA = {
       start: "June 2025",
       end: "August 2025",
       description:
-        "Built student and admin dashboards using Next.js and Firebase for 500+ users and 50+ projects, with real-time task assignment and Cashfree-integrated payments.Automated 1,000+ emails via Firebase Functions and cron jobs, reducing onboarding effort by 80% through scalable communication workflows.",
+        "Built student and admin dashboards using Next.js and Firebase for 500+ users and 50+ projects, with real-time task assignment and Cashfree-integrated payments. Automated 1,000+ emails via Firebase Functions and cron jobs, reducing onboarding effort by 80% through scalable communication workflows.",
     },
   ],
 
@@ -160,7 +200,6 @@ export const DATA = {
     },
     {
       school: "Indian School Al Ghubra",
-
       href: "https://indianschool.com/",
       degree: "Secondary Education",
       logoUrl: "/isg.png",
@@ -173,7 +212,7 @@ export const DATA = {
     {
       title: "ZeroInbox",
       href: "https://github.com/SabarishSriram/ZeroInbox",
-      dates: "Jan2025",
+      dates: "Jan 2025",
       active: true,
       description:
         "Built an email management platform integrating Gmail and Microsoft Graph APIs to process 5000+ emails per inbox. Implemented brand-level grouping and bulk inbox actions like unsubscribe, archive, and automated digest generation.",
@@ -185,8 +224,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image:
-        "https://private-user-images.githubusercontent.com/143879390/569904215-4535c6d4-a22c-4657-8c06-64902be1466f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYxNzgxNzQsIm5iZiI6MTc3NjE3Nzg3NCwicGF0aCI6Ii8xNDM4NzkzOTAvNTY5OTA0MjE1LTQ1MzVjNmQ0LWEyMmMtNDY1Ny04YzA2LTY0OTAyYmUxNDY2Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDE0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQxNFQxNDQ0MzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yNDYyZGRlMzdkZDUwMTg3NjIwMjA3NjdjNDA3MGNkNjM2ZDY4MzI3MDcwZTMyZDE0M2Y5MmVhMGE5MmI0Y2Y1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.rVMvv3fu2XAUNeEXVr1BoPkkpmOHmo0GeBIa9RHp378",
+      image: "/zeroinbox.png",
       video: "",
     },
     {
@@ -246,6 +284,7 @@ export const DATA = {
     {
       title: "Technical Lead",
       company: "HackTheBox SRM",
+      logoUrl: "/htb-logo.jpg",
       dates: "May 2024 - Present",
       description:
         "Led development of the HTB SRM website and recruitment platform handling 1000+ applications and 2000+ users. Built using Next.js, Prisma, PostgreSQL, Clerk, and AWS S3.",

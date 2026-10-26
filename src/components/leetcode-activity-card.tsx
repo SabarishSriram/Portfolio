@@ -1,8 +1,33 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMounted } from "@/lib/use-mounted";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { ActivityCalendar } from "react-activity-calendar";
-import type { Activity } from "react-activity-calendar";
+import type { Activity, ThemeInput } from "react-activity-calendar";
+
+// Two stops (empty → full ink); the calendar interpolates the levels between.
+// With round blocks this reads as a dot-matrix display.
+const CALENDAR_THEME: ThemeInput = {
+  light: ["#dedede", "#111111"],
+  dark: ["#262626", "#ffffff"],
+};
+
+// Shared by both calendars: round blocks big enough to read as a dot matrix.
+export const CALENDAR_BLOCKS = {
+  blockSize: 16,
+  blockMargin: 5,
+  blockRadius: 8,
+  fontSize: 10,
+} as const;
+
+export function useCalendarTheme() {
+  const { resolvedTheme } = useTheme();
+  const mounted = useMounted();
+  const colorScheme: "light" | "dark" =
+    mounted && resolvedTheme === "light" ? "light" : "dark";
+  return { theme: CALENDAR_THEME, colorScheme };
+}
 
 interface LeetCodeActivityCardProps {
   username?: string;
@@ -88,58 +113,32 @@ export function LeetCodeActivityCard({
     };
   }, [username, months]);
 
-  const colorTheme = useMemo(
-    () => ({
-      // GitHub-style ramp but in yellow/gold
-      dark: ["#0d1117", "#0e4429", "#006d32", "#26a641", "#39d353"],
-      light: ["#ffffff", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-    }),
-    [],
-  );
+  const { theme, colorScheme } = useCalendarTheme();
 
   const clampedMonthsForLabel = Math.min(Math.max(months ?? 12, 1), 12);
   const totalCountLabel =
     clampedMonthsForLabel === 12
-      ? "Total submissions in the last year: {{count}}"
-      : `Total submissions in the last ${clampedMonthsForLabel} months: {{count}}`;
+      ? "{{count}} submissions in the last year"
+      : `{{count}} submissions in the last ${clampedMonthsForLabel} months`;
 
   return (
-    <div className="w-full flex justify-center px-0">
-      <div className="w-full rounded-2xl border border-border/70 bg-card/90 shadow-sm px-3 py-3">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-sm font-semibold text-foreground">
-            LeetCode Activity
-          </h3>
-
-          <div className="flex justify-center">
-            <div className="max-w-full overflow-x-auto sm:overflow-visible">
-              {error && (
-                <p className="text-xs text-destructive text-center">{error}</p>
-              )}
-              {!error && !data && (
-                <p className="text-xs text-muted-foreground text-center">
-                  Loading LeetCode submissions…
-                </p>
-              )}
-              {!error && data && (
-                <ActivityCalendar
-                  data={data}
-                  labels={{
-                    legend: { less: "Less", more: "More" },
-                    totalCount: totalCountLabel,
-                  }}
-                  theme={colorTheme}
-                  maxLevel={4}
-                  showTotalCount
-                  blockSize={13}
-                  blockMargin={4}
-                  fontSize={12}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="max-w-full overflow-x-auto font-mono text-muted-foreground">
+      {error && <p className="font-mono text-xs">{error}</p>}
+      {!error && (
+        <ActivityCalendar
+          data={data ?? []}
+          loading={!data}
+          labels={{
+            legend: { less: "Less", more: "More" },
+            totalCount: totalCountLabel,
+          }}
+          theme={theme}
+          colorScheme={colorScheme}
+          maxLevel={4}
+          showTotalCount
+          {...CALENDAR_BLOCKS}
+        />
+      )}
     </div>
   );
 }

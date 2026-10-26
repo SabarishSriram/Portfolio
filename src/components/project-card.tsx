@@ -1,37 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
-import Markdown from "react-markdown";
-
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
-  const [imageError, setImageError] = useState(false);
-
-  if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      className="w-full h-48 object-cover"
-      onError={() => setImageError(true)}
-    />
-  );
-}
+import { useRef, useState } from "react";
 
 interface Props {
+  index: number;
   title: string;
   href?: string;
   description: string;
   dates: string;
   tags: readonly string[];
-  link?: string;
   image?: string;
   video?: string;
   links?: readonly {
@@ -42,102 +22,132 @@ interface Props {
   className?: string;
 }
 
+function Placeholder({ title }: { title: string }) {
+  return (
+    <div className="flex size-full items-center justify-center">
+      <span className="font-dot text-4xl font-bold uppercase sm:text-5xl">
+        {title}
+        <span className="text-brand">.</span>
+      </span>
+    </div>
+  );
+}
+
 export function ProjectCard({
+  index,
   title,
   href,
   description,
   dates,
   tags,
-  link,
   image,
   video,
   links,
   className,
 }: Props) {
+  const ref = useRef<HTMLElement>(null);
+  const [imageFailed, setImageFailed] = useState(false);
+
+  const onPointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    const node = ref.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    node.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    node.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
+
   return (
-    <div
+    <article
+      ref={ref}
+      onPointerMove={onPointerMove}
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
-        className
+        "group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card transition-colors duration-500 hover:border-foreground/20",
+        className,
       )}
     >
-      <div className="relative shrink-0">
-        <Link
-          href={href || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
-          {video ? (
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-48 object-cover"
-            />
-          ) : image ? (
-            <ProjectImage src={image} alt={title} />
-          ) : (
-            <div className="w-full h-48 bg-muted" />
-          )}
-        </Link>
-        {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links.map((link, idx) => (
-              <Link
-                href={link.href}
-                key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
-                  variant="default"
+      {/* Spotlight that follows the pointer */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(360px_circle_at_var(--x)_var(--y),color-mix(in_oklch,var(--foreground)_6%,transparent),transparent_60%)]"
+      />
+
+      {/* 16:9 frame matching laptop screenshots; contain-fit so nothing is cropped or stretched */}
+      <a
+        href={href || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${title}`}
+        className="dot-grid relative m-2 mb-0 block aspect-video overflow-hidden rounded-[1.25rem] border border-border bg-background"
+      >
+        {video ? (
+          <video
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="size-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          />
+        ) : image && !imageFailed ? (
+          <img
+            src={image}
+            alt={title}
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+            className="size-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          />
+        ) : (
+          <Placeholder title={title} />
+        )}
+      </a>
+
+      <div className="relative flex flex-1 flex-col gap-3 p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          <span>
+            <span className="text-brand">{String(index + 1).padStart(2, "0")}</span>
+            <span className="mx-2">/</span>
+            {dates}
+          </span>
+          {links && links.length > 0 && (
+            <span className="flex items-center gap-3">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-10 inline-flex items-center gap-1 transition-colors hover:text-foreground"
                 >
                   {link.icon}
                   {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-      <div className="p-6 flex flex-col gap-3 flex-1">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
-          </div>
-          <Link
-            href={href || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-            aria-label={`Open ${title}`}
-          >
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </Link>
+                </a>
+              ))}
+            </span>
+          )}
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-          <Markdown>{description}</Markdown>
-        </div>
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-auto">
+
+        <h3 className="flex items-center gap-2 font-dot text-3xl leading-none font-bold uppercase">
+          {title}
+          <ArrowUpRight className="size-5 -translate-x-1 translate-y-1 text-muted-foreground opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
+        </h3>
+
+        <p className="text-sm leading-relaxed text-pretty text-muted-foreground">
+          {description}
+        </p>
+
+        {tags.length > 0 && (
+          <ul className="mt-auto flex flex-wrap gap-1.5 pt-2">
             {tags.map((tag) => (
-              <Badge
+              <li
                 key={tag}
-                className="text-[11px] font-medium border border-border h-6 w-fit px-2"
-                variant="outline"
+                className="rounded-full bg-muted px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
               >
                 {tag}
-              </Badge>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
-    </div>
+    </article>
   );
 }

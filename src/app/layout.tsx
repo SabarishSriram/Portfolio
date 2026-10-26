@@ -1,23 +1,28 @@
+import { CursorDot } from "@/components/cursor-dot";
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Providers } from "@/components/providers";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Doto, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
-const geist = Geist({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "700"],
   variable: "--font-mono",
+});
+
+const doto = Doto({
+  subsets: ["latin"],
+  axes: ["ROND"],
+  variable: "--font-doto",
 });
 
 export const metadata: Metadata = {
@@ -70,22 +75,26 @@ export default function RootLayout({
         />
       </head>
       <body
+        id="top"
         className={cn(
-          "min-h-screen font-sans antialiased relative bg-background",
-          "bg-[radial-gradient(ellipse_at_top,_rgba(59,130,246,0.10),transparent_45%),radial-gradient(ellipse_at_50%_35%,_rgba(0,0,0,0.35),transparent_55%),radial-gradient(ellipse_at_50%_70%,_rgba(239,68,68,0.08),transparent_50%)]",
-          geist.variable,
-          geistMono.variable,
+          "relative min-h-screen bg-background font-sans antialiased",
+          spaceGrotesk.variable,
+          spaceMono.variable,
+          doto.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <TooltipProvider delayDuration={0}>
-            
-            <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
-              {children}
-            </div>
-            <Navbar />
-          </TooltipProvider>
-        </ThemeProvider>
+        <Providers>
+          <div
+            aria-hidden
+            className="dot-grid pointer-events-none fixed inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
+          />
+          <CursorDot />
+          <Navbar />
+          <div className="relative z-10 mx-auto max-w-4xl px-4 pt-24 pb-12 sm:px-6 sm:pt-28">
+            {children}
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );

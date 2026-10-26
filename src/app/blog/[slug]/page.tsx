@@ -123,16 +123,16 @@ export default async function Blog({
         }}
       />
       <div className="flex justify-start gap-4 items-center">
-        <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-lg px-2 py-1 inline-flex items-center gap-1 mb-6 group" aria-label="Back to Blog">
+        <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-full px-3 py-1 inline-flex items-center gap-1 mb-8 group" aria-label="Back to Blog">
           <ChevronLeft className="size-3 group-hover:-translate-x-px transition-transform" />
           Back to Blog
         </Link>
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="title font-semibold text-3xl md:text-4xl tracking-tighter leading-tight">
+        <h1 className="title font-semibold text-4xl md:text-5xl tracking-tight leading-[1.05]">
           {post.title}
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="font-mono text-xs text-muted-foreground">
           {formatDate(post.publishedAt)}
         </p>
       </div>
@@ -156,7 +156,7 @@ export default async function Blog({
           {previousPost ? (
             <Link
               href={`/blog/${getSlug(previousPost)}`}
-              className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors"
+              className="group flex-1 flex flex-col gap-1 p-4 rounded-2xl border border-border hover:bg-foreground/[0.03] transition-colors"
             >
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
                 <ChevronLeft className="size-3" />
@@ -173,7 +173,7 @@ export default async function Blog({
           {nextPost ? (
             <Link
               href={`/blog/${getSlug(nextPost)}`}
-              className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors text-right"
+              className="group flex-1 flex flex-col gap-1 p-4 rounded-2xl border border-border hover:bg-foreground/[0.03] transition-colors text-right"
             >
               <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
                 Next
