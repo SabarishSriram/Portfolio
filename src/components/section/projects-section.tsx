@@ -16,6 +16,7 @@ export default function ProjectsSection() {
               dates={project.dates}
               tags={project.technologies}
               image={project.image}
+              imageBackground={"imageBackground" in project ? project.imageBackground : undefined}
               video={project.video}
               links={project.links}
             />

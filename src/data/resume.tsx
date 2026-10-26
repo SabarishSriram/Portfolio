@@ -225,6 +225,8 @@ export const DATA = {
         },
       ],
       image: "/zeroinbox.png",
+      // Fills the frame around images that aren't 16:9
+      imageBackground: "#ffffff",
       video: "",
     },
     {
@@ -249,6 +251,7 @@ export const DATA = {
       ],
       image:
         "https://camo.githubusercontent.com/77e4ed4ad773c9306918c31bf52c00f173dc964a8e20d54afb64e24e99521b5e/68747470733a2f2f692e726564642e69742f7175713269346a6f38646367312e706e67",
+      imageBackground: "#000000",
       video: "",
     },
     {
@@ -273,7 +276,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
+      image: "/slidescribe.png",
+      imageBackground: "#000000",
       video: "",
     },
   ],

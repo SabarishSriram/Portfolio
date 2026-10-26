@@ -13,6 +13,8 @@ interface Props {
   dates: string;
   tags: readonly string[];
   image?: string;
+  /** Solid fill behind the image for screenshots that aren't 16:9 (default: dot grid) */
+  imageBackground?: string;
   video?: string;
   links?: readonly {
     icon: React.ReactNode;
@@ -41,6 +43,7 @@ export function ProjectCard({
   dates,
   tags,
   image,
+  imageBackground,
   video,
   links,
   className,
@@ -77,7 +80,11 @@ export function ProjectCard({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Open ${title}`}
-        className="dot-grid relative m-2 mb-0 block aspect-video overflow-hidden rounded-[1.25rem] border border-border bg-background"
+        className={cn(
+          "relative m-2 mb-0 block aspect-video overflow-hidden rounded-[1.25rem] border border-border bg-background",
+          !imageBackground && "dot-grid",
+        )}
+        style={imageBackground ? { backgroundColor: imageBackground } : undefined}
       >
         {video ? (
           <video
